@@ -19,5 +19,17 @@ public class NewBehaviourScript : MonoBehaviour
     }
     public void Talk(){
         Anim.SetBool("isTalking", true);
+    }public void NotClap(){
+        Anim.SetBool("isClapping", false);
     }
+    public void NotHello(){
+        Anim.SetBool("isGreeting", false);
+    }
+    public void NotGoodBye(){
+        Anim.SetBool("isLeaving", false);
+    }
+    public void NotSad(){
+        Anim.SetBool("isSad", false);
+    }
+
 }
