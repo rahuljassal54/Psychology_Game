@@ -8,12 +8,10 @@ public class PlayerMovementTutorial : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public Transform orientation;
-
     float horizontalInput;
     float verticalInput;
     public Animator anim;
     Vector3 moveDirection;
-    public float groundDrag;
     Rigidbody rb;
 
     private void Start()
@@ -25,7 +23,6 @@ public class PlayerMovementTutorial : MonoBehaviour
     private void Update()
     {
         MyInput();
-        rb.drag = groundDrag;
     }
 
     private void FixedUpdate()
