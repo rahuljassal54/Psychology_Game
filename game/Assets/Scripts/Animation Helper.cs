@@ -18,6 +18,7 @@ public class setNotTalk : StateMachineBehaviour
        if(animator.GetBool("isClapping"))animator.SetBool("isClapping", false);
        if(animator.GetBool("isGreeting"))animator.SetBool("isGreeting", false);
        if(animator.GetBool("isLeaving"))animator.SetBool("isLeaving", false);
+       if(animator.GetBool("isPetting"))animator.SetBool("isPetting", false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -15,6 +15,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
+    float petInput;
     public Animator anim;
     Vector3 moveDirection;
     Rigidbody rb;
@@ -24,13 +25,6 @@ public class PlayerMovementTutorial : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-    }
-    private bool OnSlope(){
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.2f)){
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
-        }
-        return false;
     }
     private Vector3 GetSlopeMoveDirection(){
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
@@ -43,14 +37,12 @@ public class PlayerMovementTutorial : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
+    private void Update(){
         MyInput();
         SpeedControl();
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate(){
         MovePlayer();
     }
 
@@ -60,15 +52,9 @@ public class PlayerMovementTutorial : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
     }
 
-    private void MovePlayer()
-    {
+    private void MovePlayer(){
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if(OnSlope()){
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
-            Debug.Log("On slope");
-        }
-        else rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        rb.useGravity = !OnSlope();
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         anim.SetFloat("isMoving", moveDirection.magnitude);
     }
 
