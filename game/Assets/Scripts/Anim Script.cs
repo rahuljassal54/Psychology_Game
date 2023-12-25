@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class AnimScript : MonoBehaviour
 {
     public Animator Anim;
     public void Clap(){
@@ -16,6 +16,9 @@ public class NewBehaviourScript : MonoBehaviour
     }
     public void Sad(){
         Anim.SetBool("isSad", true);
+    }
+    public void SadIdle(){
+        Anim.SetBool("isSadIdle", true);
     }
     public void Talk(){
         Anim.SetBool("isTalking", true);

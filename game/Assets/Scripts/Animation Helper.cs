@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class setNotTalk : StateMachineBehaviour
+public class setNotAction: StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,6 +19,7 @@ public class setNotTalk : StateMachineBehaviour
        if(animator.GetBool("isGreeting"))animator.SetBool("isGreeting", false);
        if(animator.GetBool("isLeaving"))animator.SetBool("isLeaving", false);
        if(animator.GetBool("isPetting"))animator.SetBool("isPetting", false);
+       if(animator.GetBool("isSadIdle"))animator.SetBool("isSadIdle", false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

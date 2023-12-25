@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepBehaviour : MonoBehaviour
+public class AnimalBehaviour : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     public bool isSheep;
     private string[] animations_sheep = {  "walk_forward", "idle", "turn_90_L","idle", "turn_90_R", "idle_2", "idle_2", "eat", "eat", "eat", "turn_90_L", "turn_90_R", "eat"};
     private string[] animations_chicken = { "walk", "turn", "eat", "run"};
