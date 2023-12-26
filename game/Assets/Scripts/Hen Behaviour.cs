@@ -5,26 +5,20 @@ using UnityEngine;
 public class HenBehaviour : MonoBehaviour
 {
     public GameObject hen;
-    public bool isHen;
     public Animator anim;
     private void OnTriggerStay(Collider other){
-        if(isHen){
-            if(other.CompareTag("Player")){
-                if(Input.GetAxis("Pet") != 0){
-                    GlobalVariables.hen_caught++;
-                    Invoke("SetInactive", 7);
-                }
+        if(other.CompareTag("Player")){
+            if(Input.GetAxis("Pet") != 0){
+                anim.SetBool("isPetting", true);
+                StartCoroutine(SetInactive());
+                // hen.SetActive(false);
+                Debug.Log("Hen caught! till now : " + GlobalVariables.hen_caught);
             }
         }
-        else{
-            if(other.CompareTag("Hen")){
-               if(Input.GetAxis("Pet") != 0){
-                    anim.Play("Pet");
-                } 
-            }
-        } 
     }
-    private void SetInactive(){
+    private IEnumerator SetInactive(){
+        yield return new WaitForSeconds(7);
+        if(hen.activeSelf) GlobalVariables.hen_caught++;
         hen.SetActive(false);
     }
 }

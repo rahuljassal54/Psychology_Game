@@ -24,6 +24,7 @@ public class QuizBehaviour : MonoBehaviour
         int unitsToGive = wrongAttempts[quesIndex-1];
         if(unitsToGive > 3) unitsToGive = 3;
         GlobalVariables.materials[itemToGive] += unitValues[unitsToGive];
+        Debug.Log("Global var: " +  itemToGive + " value : " + GlobalVariables.materials[itemToGive]+ " units added : " + unitValues[unitsToGive]);
         Debug.Log("item to give "+ itemToGive + "  units to give " + unitValues[unitsToGive]+ " index "+ unitsToGive);
         GameObject child =  Sprites[itemToGive].transform.GetChild(unitsToGive).gameObject;
         StartCoroutine(FadeInOut(child));
