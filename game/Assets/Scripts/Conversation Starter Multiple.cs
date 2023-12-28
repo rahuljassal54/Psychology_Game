@@ -8,9 +8,9 @@ public class ConversationStarterMultiple : MonoBehaviour
     [SerializeField] private NPCConversation myConversation2;
     [SerializeField] private NPCConversation myConversation3;
 
-    private bool firstConvo;
+    public static bool firstConvoDoneBool;
     void Start(){
-        firstConvo = true;
+        firstConvoDoneBool = false;
     }
 
     private bool allHensCollected(){
@@ -18,14 +18,16 @@ public class ConversationStarterMultiple : MonoBehaviour
         return GlobalVariables.hen_caught == 5;
     }
     public void firstConvoDone(){
-        firstConvo = false;
+        firstConvoDoneBool = true;
     }
     private void OnTriggerStay(Collider other){
         if(other.CompareTag("Player")){
             if(Input.GetAxis("Interact") != 0){
-                if(firstConvo) ConversationManager.Instance.StartConversation(myConversation1);
-                else if(!allHensCollected()) ConversationManager.Instance.StartConversation(myConversation2);
-                else ConversationManager.Instance.StartConversation(myConversation3);
+                if(firstConvoDoneBool){
+                    if(!allHensCollected()) ConversationManager.Instance.StartConversation(myConversation2);
+                    else ConversationManager.Instance.StartConversation(myConversation3);
+                }
+                else ConversationManager.Instance.StartConversation(myConversation1);
             }
         }
     }

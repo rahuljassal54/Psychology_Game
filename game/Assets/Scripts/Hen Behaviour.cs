@@ -8,7 +8,7 @@ public class HenBehaviour : MonoBehaviour
     public Animator anim;
     private void OnTriggerStay(Collider other){
         if(other.CompareTag("Player")){
-            if(Input.GetAxis("Pet") != 0){
+            if(Input.GetAxis("Pet") != 0 && ConversationStarterMultiple.firstConvoDoneBool){
                 anim.SetBool("isPetting", true);
                 StartCoroutine(SetInactive());
                 // hen.SetActive(false);

@@ -5,13 +5,25 @@ using UnityEngine;
 public class GlobalVariables : MonoBehaviour
 {
     public static int hen_caught;
+    public static Vector3 playerPosition;
+    public static bool[] npcCompleted;
+    public static int coins;
+    public static int[] houseProgress;
     public static int[] materials; 
     public static LinkedList<Emotion> EmotionTracker;
+    public static Transform playerObj; // assign the chosen player here, load script will give position to this
+    public static Transform player; // original coordinates
+
+    // todo : define the initial spawning place of the person
     /*  0 - wood, 1 - metal, 2 - stone, 3 - paintbuckets, 4 - cement */
     void Start()
     {
         hen_caught = 0;
         materials = new int[5] {0,0,0,0,0};
+        houseProgress = new int[3] {0,0,0};
+        coins = 0;
+        EmotionTracker = new LinkedList<Emotion>();
+        npcCompleted = new bool[4] {false, false, false, false};
     }
     
     public void IncreaseAsset(int itemIndex, int quantity){
@@ -21,7 +33,6 @@ public class GlobalVariables : MonoBehaviour
         Emotion emotion = new Emotion(e, System.DateTime.Now);
         EmotionTracker.AddLast(emotion);
     }
-
 }
 [System.Serializable]
 public class Emotion{
