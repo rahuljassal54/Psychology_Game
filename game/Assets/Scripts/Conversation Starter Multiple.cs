@@ -5,29 +5,43 @@ using DialogueEditor;
 public class ConversationStarterMultiple : MonoBehaviour
 {
     [SerializeField] private NPCConversation myConversation1;
-    [SerializeField] private NPCConversation myConversation2;
-    [SerializeField] private NPCConversation myConversation3;
+    public NPCConversation myConversation2;
+    public NPCConversation myConversation3;
+    public int npcNumber;
 
-    public static bool firstConvoDoneBool;
+    public static bool[] ConvoDoneBools;
     void Start(){
-        firstConvoDoneBool = false;
+        ConvoDoneBools = new bool[4] {false,false,false,false};
     }
-
     private bool allHensCollected(){
-        Debug.Log("oops only : " + GlobalVariables.hen_caught);
         return GlobalVariables.hen_caught == 5;
     }
-    public void firstConvoDone(){
-        firstConvoDoneBool = true;
+    public void ConvoDone(int index){
+       ConvoDoneBools[index] = true;
     }
+
     private void OnTriggerStay(Collider other){
         if(other.CompareTag("Player")){
             if(Input.GetAxis("Interact") != 0){
-                if(firstConvoDoneBool){
-                    if(!allHensCollected()) ConversationManager.Instance.StartConversation(myConversation2);
-                    else ConversationManager.Instance.StartConversation(myConversation3);
+                switch (npcNumber){
+                    case 1:
+                        if(!ConvoDoneBools[0]) ConversationManager.Instance.StartConversation(myConversation1);
+                        else ConversationManager.Instance.StartConversation(myConversation2);
+                        break;
+                    case 2:
+                        ConversationManager.Instance.StartConversation(myConversation1);
+                        break;
+                    case 3:
+                        ConversationManager.Instance.StartConversation(myConversation1);
+                        break;
+                    case 4:
+                        if(!ConvoDoneBools[0])ConversationManager.Instance.StartConversation(myConversation1);
+                        else if(!allHensCollected()) ConversationManager.Instance.StartConversation(myConversation2);
+                        else ConversationManager.Instance.StartConversation(myConversation3);
+                        break;
+
                 }
-                else ConversationManager.Instance.StartConversation(myConversation1);
+                
             }
         }
     }
