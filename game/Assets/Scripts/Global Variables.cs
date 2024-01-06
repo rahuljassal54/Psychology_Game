@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalVariables : MonoBehaviour
 {
     public static int hen_caught;
+    public static bool tic_tac_toe_wun;
     public static Vector3 playerPosition;
     public static bool[] npcCompleted;
     public static int coins;
@@ -19,7 +20,8 @@ public class GlobalVariables : MonoBehaviour
     void Start()
     {
         hen_caught = 0;
-        materials = new int[5] {0,0,0,0,0};
+        tic_tac_toe_wun = false;
+        materials = new int[5] {15,18,13,12,14};
         houseProgress = new int[3] {0,0,0};
         coins = 0;
         EmotionTracker = new LinkedList<Emotion>();

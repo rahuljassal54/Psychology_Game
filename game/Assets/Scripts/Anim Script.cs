@@ -22,17 +22,21 @@ public class AnimScript : MonoBehaviour
     }
     public void Talk(){
         Anim.SetBool("isTalking", true);
-    }public void NotClap(){
-        Anim.SetBool("isClapping", false);
     }
-    public void NotHello(){
-        Anim.SetBool("isGreeting", false);
+    public void Angry(){
+        Anim.SetBool("isAngry", true);
     }
-    public void NotGoodBye(){
-        Anim.SetBool("isLeaving", false);
+    public void AngryIdle(){
+        Anim.SetBool("isAngryIdle", true);
     }
-    public void NotSad(){
-        Anim.SetBool("isSad", false);
+    public void Dismissive(){
+        Anim.SetBool("isDismissive", true);
     }
-
+    public void Defeat(){
+        Anim.SetBool("isDefeat", true);
+    }
+    public void BackPoint(){
+        Anim.SetBool("isBackPointing", true);
+    }
+    
 }

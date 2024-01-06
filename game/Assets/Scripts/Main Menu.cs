@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame(){
-        SceneManager.LoadScene(1);
+    private void Awake(){
+        gameObject.SetActive(true);
     }
     public void QuitGame(){
         Application.Quit();

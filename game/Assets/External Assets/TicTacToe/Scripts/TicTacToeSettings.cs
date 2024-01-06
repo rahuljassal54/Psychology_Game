@@ -1,19 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using TMPro;
 public class TicTacToeSettings : MonoBehaviour {
 
-    [SerializeField]
-    private TicTacToeController ticTacToeController;
+   [SerializeField] private GameObject WinGameAlert;
+    [SerializeField] public TextMeshProUGUI alertMessage;
+    [SerializeField] private TicTacToeController ticTacToeController;
     [SerializeField]
     private RectTransform canvasRect;
     [SerializeField]
-    private Text p1WinsText;
+    private TextMeshProUGUI p1WinsText;
     [SerializeField]
     private Toggle p1AiToggle;
     [SerializeField]
-    private Text p2WinsText;
+    private TextMeshProUGUI p2WinsText;
     [SerializeField]
     private Toggle p2AiToggle;
     [SerializeField]
@@ -31,6 +32,8 @@ public class TicTacToeSettings : MonoBehaviour {
     [SerializeField]
     private Button startButton;
     [SerializeField]
+    private GameObject endButton;
+    [SerializeField]
     private Button hideButton;
     [SerializeField]
     private Button showButton;
@@ -47,7 +50,7 @@ public class TicTacToeSettings : MonoBehaviour {
 
     private void Start() {
         ticTacToeController.onGameOverDelegate = OnGameOver;
-        StartCoroutine(StartButtonBlinkCoroutine());
+        // StartCoroutine(StartButtonBlinkCoroutine());
     }
 
     public void CheckIfAnyAiIsActive() {
@@ -168,15 +171,21 @@ public class TicTacToeSettings : MonoBehaviour {
         } else if (win == 0) {
             gameOverText.text = "PLAYER 1 WINS";
             p1Score++;
-            p1WinsText.text = "wins " + p1Score;
+            p1WinsText.text = "" + p1Score;
         } else {
             gameOverText.text = "PLAYER 2 WINS";
             p2Score++;
-            p2WinsText.text = "wins " + p2Score;
+            p2WinsText.text = "" + p2Score;
         }
-
+        if(p1Score == 3) {
+            alertMessage.text = "Congrats! You won three games against Henry!";
+            WinGameAlert.SetActive(true);
+            endButton.SetActive(true);
+            GlobalVariables.tic_tac_toe_wun = true;
+        }
         OnShowClicked();
+
         startButton.interactable = true;
-        StartCoroutine(StartButtonBlinkCoroutine());
+        // StartCoroutine(StartButtonBlinkCoroutine());
     }
 }

@@ -20,6 +20,11 @@ public class setNotAction: StateMachineBehaviour
        if(animator.GetBool("isLeaving"))animator.SetBool("isLeaving", false);
        if(animator.GetBool("isPetting"))animator.SetBool("isPetting", false);
        if(animator.GetBool("isSadIdle"))animator.SetBool("isSadIdle", false);
+       if(animator.GetBool("isAngryIdle"))animator.SetBool("isAngryIdle", false);
+       if(animator.GetBool("isAngry"))animator.SetBool("isAngry", false);
+       if(animator.GetBool("isDismissive"))animator.SetBool("isDismissive", false);
+       if(animator.GetBool("isDefeat"))animator.SetBool("isDefeat", false);
+       if(animator.GetBool("isBackPointing"))animator.SetBool("isBackPointing", false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
