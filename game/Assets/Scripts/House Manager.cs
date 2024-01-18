@@ -28,9 +28,7 @@ public class HouseManager : MonoBehaviour
         alertMessage.text = "Congratulations you built the " + dict[index] + " house!!";
         Houses[index].SetActive(true);
         anim.SetBool("isClapping", true);
-        // display messagae
-        // also, remove the button from the houseBUilder to prevent rebuilding of the same
-
+        GlobalVariables.houseProgress[index] = true;
     }
     public void FailureResponse(int index){
         // insufficient funds

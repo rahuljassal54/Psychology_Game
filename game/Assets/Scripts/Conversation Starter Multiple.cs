@@ -42,7 +42,7 @@ public class ConversationStarterMultiple : MonoBehaviour
                         ConversationManager.Instance.StartConversation(Conversations[0]);
                         break;
                     case 5:
-                        if(!GlobalVariables.tic_tac_toe_wun) ConversationManager.Instance.StartConversation(Conversations[0]);
+                        if(!GlobalVariables.tictac) ConversationManager.Instance.StartConversation(Conversations[0]);
                         else ConversationManager.Instance.StartConversation(Conversations[1]);
                     break;
                         

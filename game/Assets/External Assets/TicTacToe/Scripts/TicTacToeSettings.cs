@@ -178,10 +178,10 @@ public class TicTacToeSettings : MonoBehaviour {
             p2WinsText.text = "" + p2Score;
         }
         if(p1Score == 3) {
-            alertMessage.text = "Congrats! You won three games against Henry!";
+            alertMessage.text = "Congrats! You won three games against Harsh!";
             WinGameAlert.SetActive(true);
             endButton.SetActive(true);
-            GlobalVariables.tic_tac_toe_wun = true;
+            GlobalVariables.tictac = true;
         }
         OnShowClicked();
 

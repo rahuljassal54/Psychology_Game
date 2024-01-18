@@ -4,7 +4,7 @@ using TMPro;
 public class PlayerNameManager : MonoBehaviour
 {
     // Non-static variable to store the player name...
-    private string playerName;
+    public static string playerName;
     public InputField playerNameInputField;
 
     // Awake is called before any Start function
