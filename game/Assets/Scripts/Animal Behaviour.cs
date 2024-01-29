@@ -25,16 +25,10 @@ public class AnimalBehaviour : MonoBehaviour
             }
         }else{
             while (true){
-
-                string randomAnimation2 = animations_hello[Random.Range(0, animations_hello.Length)];
+                string randomAnimation2 = animations_chicken[Random.Range(0, animations_chicken.Length)];
                 animator.Play(randomAnimation2);
                 yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-                yield return new WaitForSeconds(Random.Range(1f, 4f));
-
-                // string randomAnimation2 = animations_chicken[Random.Range(0, animations_chicken.Length)];
-                // animator.Play(randomAnimation2);
-                // yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-                // yield return new WaitForSeconds(Random.Range(2f, 5f));
+                yield return new WaitForSeconds(Random.Range(2f, 5f));
             }
         }
     }

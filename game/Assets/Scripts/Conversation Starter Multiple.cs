@@ -7,7 +7,6 @@ public class ConversationStarterMultiple : MonoBehaviour
 
     [SerializeField] NPCConversation[] Conversations;
     public int npcNumber;
-    public static bool canPet = false;
     private bool[] ConvoDoneBools;
     void Start(){
         ConvoDoneBools = new bool[Conversations.Length];
@@ -33,7 +32,6 @@ public class ConversationStarterMultiple : MonoBehaviour
                     case 3:
                         if(!ConvoDoneBools[0]){
                             ConversationManager.Instance.StartConversation(Conversations[0]);
-                            canPet = true;
                         }
                         else if(!allHensCollected()) ConversationManager.Instance.StartConversation(Conversations[1]);
                         else ConversationManager.Instance.StartConversation(Conversations[2]);
