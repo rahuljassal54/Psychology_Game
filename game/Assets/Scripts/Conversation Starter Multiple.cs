@@ -12,7 +12,7 @@ public class ConversationStarterMultiple : MonoBehaviour
         ConvoDoneBools = new bool[Conversations.Length];
     }
     private bool allHensCollected(){
-        return GlobalVariables.hen_caught == 5;
+        return GlobalVariables.hen_caught >= 3;
     }
     public void ConvoDone(int index){
        ConvoDoneBools[index] = true;
@@ -24,7 +24,8 @@ public class ConversationStarterMultiple : MonoBehaviour
                 switch (npcNumber){
                     case 1:
                         if(!ConvoDoneBools[0]) ConversationManager.Instance.StartConversation(Conversations[0]);
-                        else ConversationManager.Instance.StartConversation(Conversations[1]);
+                        else if (!ConvoDoneBools[1]) ConversationManager.Instance.StartConversation(Conversations[1]);
+                        else ConversationManager.Instance.StartConversation(Conversations[2]);
                         break;
                     case 2:
                         ConversationManager.Instance.StartConversation(Conversations[0]);

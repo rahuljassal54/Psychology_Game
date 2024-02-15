@@ -1,7 +1,7 @@
- using System;
+using System;
 using System.IO;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 [Serializable] //kept for ease of file conversion
 public class PlayerSaveData
 {
@@ -23,6 +23,8 @@ public class PlayerSaveData
     public bool house3Progress;
     public bool tictac;
     public string emotions;
+    public string test_scores;
+    public int currentIsland;
 }
 
 public class SaveGame : MonoBehaviour
@@ -49,12 +51,13 @@ public class SaveGame : MonoBehaviour
         data.house3Progress = GlobalVariables.houseProgress[2];
         data.tictac = GlobalVariables.tictac;
         data.emotions = JsonUtility.ToJson(GlobalVariables.emotionArray);
-
+        data.test_scores = JsonUtility.ToJson(GlobalVariables.testScores);
+        data.currentIsland = SceneManager.GetActiveScene().buildIndex;
         // Convert data to JSON...we can do txt too but JSON IS BETTER
         string jsonData = JsonUtility.ToJson(data);
         string playerName = PlayerNameManager.playerName;
         // Save to file
-        string filePath = Application.persistentDataPath + "/" + playerName + ".json";
+        string filePath =  "./" + playerName + ".json";
         File.WriteAllText(filePath, jsonData);
     }
     public void SaveQuit(){

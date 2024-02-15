@@ -7,7 +7,7 @@ public class HouseManager : MonoBehaviour
 {
     private int[] houseRequirements;
     private string[] dict = {"Small", "Medium", "Big"};
-    [SerializeField] public Animator anim;
+    // [SerializeField] public Animator anim;
     [SerializeField] public GameObject[] HousesUI;
     [SerializeField] public GameObject[] Houses;
     [SerializeField] public GameObject AlertPanel;
@@ -27,7 +27,7 @@ public class HouseManager : MonoBehaviour
         for(int i = 0; i<5; i++) GlobalVariables.materials[i] -= houseRequirements[index];
         alertMessage.text = "Congratulations you built the " + dict[index] + " house!!";
         Houses[index].SetActive(true);
-        anim.SetBool("isClapping", true);
+        // anim.SetBool("isClapping", true);
         GlobalVariables.houseProgress[index] = true;
     }
     public void FailureResponse(int index){
